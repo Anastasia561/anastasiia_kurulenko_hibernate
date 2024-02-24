@@ -8,10 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "country_language", schema = "world")
 public class CountryLanguage {
@@ -24,13 +28,13 @@ public class CountryLanguage {
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @Column(name="language")
+    @Column(name = "language")
     private String language;
 
-    @Column(name="is_official", columnDefinition = "BIT")
+    @Column(name = "is_official", columnDefinition = "BIT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean isOfficial;
 
-    @Column(name="percentage")
+    @Column(name = "percentage")
     private BigDecimal percentage;
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class CityDAO {
     private final SessionFactory sessionFactory;
+
     public CityDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
