@@ -26,4 +26,11 @@ public class CityDAO {
         Query<Long> query = sessionFactory.getCurrentSession().createQuery(hql, Long.class);
         return Math.toIntExact(query.uniqueResult());
     }
+
+    public City getById(Integer id) {
+        String hql = "select c from City c join fetch c.country where c.id = :id";
+        Query<City> query = sessionFactory.getCurrentSession().createQuery(hql, City.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
 }

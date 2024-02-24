@@ -92,6 +92,7 @@ public class Engine {
     public void pushToRedis(List<CityCountry> data) {
         try (StatefulRedisConnection<String, String> connection = redisClient.connect()) {
             RedisStringCommands<String, String> sync = connection.sync();
+
             for (CityCountry cityCountry : data) {
                 try {
                     sync.set(String.valueOf(cityCountry.getId()), mapper.writeValueAsString(cityCountry));
@@ -99,6 +100,34 @@ public class Engine {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public void getRedisData(List<Integer> ids) {
+        try (StatefulRedisConnection<String, String> connection = redisClient.connect()) {
+            RedisStringCommands<String, String> sync = connection.sync();
+
+            for (Integer id : ids) {
+                String value = sync.get(String.valueOf(id));
+                try {
+                    mapper.readValue(value, CityCountry.class);
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void getMysqlData(List<Integer> ids) {
+        try (Session session = sessionFactory.getCurrentSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            for (Integer id : ids) {
+                City city = cityDAO.getById(id);
+                Set<CountryLanguage> languages = city.getCountry().getLanguages();
+            }
+
+            transaction.commit();
         }
     }
 
