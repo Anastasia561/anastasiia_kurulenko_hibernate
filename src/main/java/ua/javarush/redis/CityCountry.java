@@ -2,7 +2,7 @@ package ua.javarush.redis;
 
 import lombok.Getter;
 import lombok.Setter;
-import ua.javarush.domain.Continent;
+import ua.javarush.entity.Continent;
 
 import java.math.BigDecimal;
 import java.util.Set;

@@ -2,12 +2,13 @@ package ua.javarush.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import ua.javarush.domain.Country;
+import ua.javarush.entity.Country;
 
 import java.util.List;
 
 public class CountryDAO {
     private final SessionFactory sessionFactory;
+
     public CountryDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

@@ -1,4 +1,4 @@
-package ua.javarush.domain;
+package ua.javarush.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

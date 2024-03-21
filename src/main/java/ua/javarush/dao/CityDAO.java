@@ -2,7 +2,7 @@ package ua.javarush.dao;
 
 import org.hibernate.query.Query;
 import org.hibernate.SessionFactory;
-import ua.javarush.domain.City;
+import ua.javarush.entity.City;
 
 import java.util.List;
 

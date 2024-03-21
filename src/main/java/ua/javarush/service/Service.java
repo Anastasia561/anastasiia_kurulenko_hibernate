@@ -1,4 +1,4 @@
-package ua.javarush.engine;
+package ua.javarush.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,9 +12,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import ua.javarush.dao.CityDAO;
 import ua.javarush.dao.CountryDAO;
-import ua.javarush.domain.City;
-import ua.javarush.domain.Country;
-import ua.javarush.domain.CountryLanguage;
+import ua.javarush.entity.City;
+import ua.javarush.entity.Country;
+import ua.javarush.entity.CountryLanguage;
 import ua.javarush.redis.CityCountry;
 import ua.javarush.redis.Language;
 
@@ -23,14 +23,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Engine {
+public class Service {
     private final SessionFactory sessionFactory;
     private final RedisClient redisClient;
     private final ObjectMapper mapper;
     private final CountryDAO countryDAO;
     private final CityDAO cityDAO;
 
-    public Engine() {
+    public Service() {
         sessionFactory = new Configuration()
                 .configure()
                 .addAnnotatedClass(Country.class)
