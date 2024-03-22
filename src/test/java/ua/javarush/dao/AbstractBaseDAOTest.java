@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import ua.javarush.entity.City;
 import ua.javarush.entity.Country;
 import ua.javarush.entity.CountryLanguage;
+import ua.javarush.factory.SessionFactoryProvider;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -24,12 +25,7 @@ public abstract class AbstractBaseDAOTest {
 
     @BeforeEach
     void setup() {
-        sessionFactory = new Configuration()
-                .configure("h2.cfg.xml")
-                .addAnnotatedClass(City.class)
-                .addAnnotatedClass(Country.class)
-                .addAnnotatedClass(CountryLanguage.class)
-                .buildSessionFactory();
+        sessionFactory = SessionFactoryProvider.getSessionFactory("h2.cfg.xml");
 
         cityDAO = new CityDAO(sessionFactory);
         countryDAO = new CountryDAO(sessionFactory);

@@ -15,6 +15,7 @@ import ua.javarush.dao.CountryDAO;
 import ua.javarush.entity.City;
 import ua.javarush.entity.Country;
 import ua.javarush.entity.CountryLanguage;
+import ua.javarush.factory.SessionFactoryProvider;
 import ua.javarush.redis.CityCountry;
 import ua.javarush.redis.Language;
 
@@ -30,13 +31,8 @@ public class Service {
     private final CountryDAO countryDAO;
     private final CityDAO cityDAO;
 
-    public Service() {
-        sessionFactory = new Configuration()
-                .configure()
-                .addAnnotatedClass(Country.class)
-                .addAnnotatedClass(City.class)
-                .addAnnotatedClass(CountryLanguage.class)
-                .buildSessionFactory();
+    public Service(String configPath) {
+        sessionFactory = SessionFactoryProvider.getSessionFactory(configPath);
 
         countryDAO = new CountryDAO(sessionFactory);
         cityDAO = new CityDAO(sessionFactory);
