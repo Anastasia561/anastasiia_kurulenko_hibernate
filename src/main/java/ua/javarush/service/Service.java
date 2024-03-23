@@ -9,7 +9,6 @@ import io.lettuce.core.api.sync.RedisStringCommands;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import ua.javarush.dao.CityDAO;
 import ua.javarush.dao.CountryDAO;
 import ua.javarush.entity.City;

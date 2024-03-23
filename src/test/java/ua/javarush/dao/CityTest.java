@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CityDAOTest extends AbstractBaseDAOTest {
+public class CityTest extends AbstractBaseTest {
     @Test
     void getByIdTestShouldReturnNameString() {
         String actual = cityDAO.getById(1).getName().trim();

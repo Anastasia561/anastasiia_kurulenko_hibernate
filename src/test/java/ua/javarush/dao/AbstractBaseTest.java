@@ -3,20 +3,16 @@ package ua.javarush.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import ua.javarush.entity.City;
-import ua.javarush.entity.Country;
-import ua.javarush.entity.CountryLanguage;
 import ua.javarush.factory.SessionFactoryProvider;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public abstract class AbstractBaseDAOTest {
+public abstract class AbstractBaseTest {
     protected SessionFactory sessionFactory;
     protected Session session;
     protected CityDAO cityDAO;
